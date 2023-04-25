@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnp3ly0np6tvl"]
+
+[ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_cqluf"]
+[ext_resource type="Texture2D" uid="uid://cjq8ctx5qpodd" path="res://Pixel.png" id="1_gj5xw"]
+[ext_resource type="PackedScene" uid="uid://cygv3dwxjrrjx" path="res://Scenes/Player/Saw.tscn" id="3_5haby"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5yc7"]
+size = Vector2(128, 127)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_26lw2"]
+polygon = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[node name="Player" type="CharacterBody2D" groups=["players"]]
+script = ExtResource("1_cqluf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_e5yc7")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_26lw2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0.72549, 0.431373, 1)
+scale = Vector2(128, 128)
+texture = ExtResource("1_gj5xw")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Saw" parent="." instance=ExtResource("3_5haby")]
+position = Vector2(304, -8)

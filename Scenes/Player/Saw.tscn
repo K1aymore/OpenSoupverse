@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://cygv3dwxjrrjx"]
+
+[ext_resource type="Script" path="res://Scenes/Player/Saw.gd" id="1_6p5xi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u4r2y"]
+radius = 120.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gta6u"]
+radius = 136.235
+
+[node name="Saw" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 4
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("1_6p5xi")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_u4r2y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Line2D" type="Line2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(1, 0.658824, 0.321569, 1)
+polygon = PackedVector2Array(0, -128, -88, -88, -136, 0, -96, 88, 0, 128, 88, 88, 128, 0, 80, -88)
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource("CircleShape2D_gta6u")

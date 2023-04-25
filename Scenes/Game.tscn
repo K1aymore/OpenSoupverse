@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyr22mj7ffwgt"]
+
+[ext_resource type="PackedScene" uid="uid://cnp3ly0np6tvl" path="res://Scenes/Player/Player.tscn" id="1_njros"]
+[ext_resource type="Texture2D" uid="uid://6jb5rqxtdek6" path="res://icon.svg" id="2_cxxto"]
+
+[sub_resource type="TileSet" id="TileSet_g0ktl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2aiue"]
+size = Vector2(128, 129)
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="World" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="World" instance=ExtResource("1_njros")]
+
+[node name="Blocks" type="TileMap" parent="World"]
+tile_set = SubResource("TileSet_g0ktl")
+format = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World"]
+position = Vector2(0, 264)
+collision_layer = 7
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/StaticBody2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_2aiue")
+
+[node name="Icon" type="Sprite2D" parent="World/StaticBody2D"]
+texture = ExtResource("2_cxxto")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="World"]
+position = Vector2(-177, 456)
+scale = Vector2(18.08, 1)
+collision_layer = 7
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/StaticBody2D2"]
+shape = SubResource("RectangleShape2D_2aiue")
+
+[node name="Icon" type="Sprite2D" parent="World/StaticBody2D2"]
+texture = ExtResource("2_cxxto")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="World"]
+position = Vector2(568, -464)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.737255)
+height = 0.3
